@@ -149,8 +149,8 @@
 
         /* Selo: flutua e balança de leve */
         @keyframes selo-float {
-            0%, 100% { transform: translateY(0) rotate(-6deg); }
-            50% { transform: translateY(-3px) rotate(-2deg); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
         .selo-float {
             animation: selo-float 6s ease-in-out infinite;
@@ -158,7 +158,7 @@
             transition: scale 0.3s ease;
         }
         .selo-float:hover { scale: 1.05; }
-        @media (prefers-reduced-motion: reduce) { .selo-float { animation: none; transform: rotate(-6deg); } }
+        @media (prefers-reduced-motion: reduce) { .selo-float { animation: none; transform: none; } }
     </style>
 </head>
 <body class="font-sans antialiased text-bendito-text">
@@ -243,7 +243,7 @@
                         <img src="imagens/hero-potinho.jpg" alt="Copinho da Bendito com duas bolas de sorvete em frente à frase Não é igual, é melhor" class="w-full h-full object-cover img-zoom">
                     </div>
                     <!-- Selo real da loja -->
-                    <img src="imagens/selo.png" alt="Selo Sem adição de açúcares Bendito Sorvete" class="selo-float absolute -bottom-4 -right-3 sm:-bottom-5 sm:-right-5 w-16 h-16 sm:w-20 sm:h-20 z-20 select-none" draggable="false">
+                    <img src="imagens/selo.png" alt="Selo Sem adição de açúcares Bendito Sorvete" class="selo-float absolute -bottom-4 -right-3 sm:-bottom-5 sm:-right-5 w-[72px] h-[72px] sm:w-24 sm:h-24 z-20 select-none" draggable="false">
                 </div>
 
             </div>
