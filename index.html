@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bendito Sorvete | Sorvete sem adição de açúcar em Arapongas</title>
+    <meta name="description" content="Sorveteria em Arapongas-PR onde todo sorvete é sem adição de açúcar e de fabricação própria. Casquinha, copinho, milkshake, frozen, picolés e potes para levar.">
+
+    <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Bendito Sorvete | Sorvete sem adição de açúcar em Arapongas">
+    <meta property="og:description" content="Todo sorvete da casa é sem adição de açúcar e feito por nós. Vem pra Bendito: Rua Jacutinga, 362, Centro.">
+    <meta property="og:image" content="imagens/hero-potinho.jpg">
+    <meta name="theme-color" content="#FFE100">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFE100'/%3E%3Cellipse cx='32' cy='18' rx='16' ry='5' fill='none' stroke='%23D4A017' stroke-width='4'/%3E%3Ctext x='32' y='50' font-family='Arial Black,Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%231A1A1A'%3EBS%3C/text%3E%3C/svg%3E">
+
+    <!-- Dados da loja para o Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "IceCreamShop",
+      "name": "Bendito Sorvete",
+      "description": "Sorveteria com sorvetes sem adição de açúcar e de fabricação própria.",
+      "image": "imagens/fachada-horizontal.jpg",
+      "telephone": "+55 43 99824-9220",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Jacutinga, 362, esquina com Rua Flamingos",
+        "addressLocality": "Arapongas",
+        "addressRegion": "PR",
+        "postalCode": "86700-255",
+        "addressCountry": "BR"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "12:30", "closes": "19:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:30", "closes": "18:30" }
+      ],
+      "sameAs": ["https://www.instagram.com/bendito_sorvetes/"],
+      "servesCuisine": "Sorvetes"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800;900&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bendito: {
+                            yellow: '#FFE100',
+                            dark: '#1A1A1A',
+                            white: '#FFFFFF',
+                            cream: '#FFF8E7',
+                            gray: '#F3F4F6',
+                            text: '#374151',
+                            red: '#B3262B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        heading: ['Sora', 'sans-serif'],
+                        serif: ['Lora', 'Georgia', 'serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FFFFFF; color: #374151; overflow-x: hidden; }
+        ::selection { background-color: #FFE100; color: #1A1A1A; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #F3F4F6; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; border-radius: 5px; }
+
+        .text-balance { text-wrap: balance; }
+
+        /* Auréola da logo */
+        .halo-oval {
+            width: 70px;
+            height: 15px;
+            border: 4px solid #D4A017;
+            border-radius: 50%;
+            margin: 0 auto -5px auto;
+            box-shadow: 0 4px 10px rgba(212, 160, 23, 0.4), inset 0 2px 5px rgba(212, 160, 23, 0.3);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .halo-footer { width: 92px; height: 20px; border-color: #FFE100; margin-bottom: 4px; box-shadow: 0 4px 14px rgba(255, 225, 0, 0.35); }
+        .group:hover .halo-oval { transform: translateY(-3px) scale(1.05); border-color: #FFE100; }
+
+        /* Animações de scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left { transform: translateX(-30px); }
+        .reveal-right { transform: translateX(30px); }
+        .reveal.active { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .animate-scroll-infinite { animation: none !important; }
+        }
+
+        /* Zoom nas imagens */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom { transition: transform 0.7s ease; }
+        .img-zoom-container:hover .img-zoom { transform: scale(1.05); }
+
+        /* FAQ */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+            padding-top: 1rem;
+            padding-bottom: 0.25rem;
+            opacity: 1;
+        }
+        .faq-item .icon-cross { transition: transform 0.3s ease; }
+        .faq-item.active .icon-cross { transform: rotate(45deg); }
+
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Galeria infinita */
+        @keyframes scroll-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-infinite {
+            animation: scroll-infinite 40s linear infinite;
+            width: max-content;
+        }
+        .group:hover .animate-scroll-infinite { animation-play-state: paused; }
+
+        /* Selo girando devagar */
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+        .spin-slow { animation: spin-slow 30s linear infinite; }
+    </style>
+</head>
+<body class="font-sans antialiased text-bendito-text">
+
+    <header id="header" class="fixed w-full z-50 transition-all duration-500 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center bg-white/95 backdrop-blur-md rounded-full px-6 py-2 shadow-premium border border-white/20">
+
+                <a href="#" class="flex-shrink-0 flex flex-col items-center justify-center group py-1" aria-label="Bendito Sorvete, voltar ao início">
+                    <div class="halo-oval"></div>
+                    <span class="font-heading font-black text-[1.1rem] leading-[1.1] text-bendito-dark uppercase tracking-wide text-center">
+                        BENDITO<br>SORVETE
+                    </span>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#experiencia" class="font-semibold text-bendito-dark hover:text-yellow-600 transition-colors">A Experiência</a>
+                    <a href="#loja" class="font-semibold text-bendito-dark hover:text-yellow-600 transition-colors">A Loja</a>
+                    <a href="#para-levar" class="font-semibold text-bendito-dark hover:text-yellow-600 transition-colors">Para Levar</a>
+                    <a href="#historia" class="font-semibold text-bendito-dark hover:text-yellow-600 transition-colors">Nossa História</a>
+                    <a href="#visite" class="bg-bendito-yellow text-bendito-dark px-6 py-2.5 rounded-full font-bold transition-all hover:brightness-95 hover:scale-105 active:scale-95 shadow-md">Visite-nos</a>
+                </nav>
+
+                <button id="mobile-btn" class="lg:hidden text-bendito-dark p-2 focus:outline-none" aria-label="Abrir menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-4 right-4 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+            <div class="flex flex-col p-4">
+                <a href="#experiencia" class="mobile-link py-4 px-4 font-bold text-bendito-dark border-b border-gray-50">A Experiência</a>
+                <a href="#loja" class="mobile-link py-4 px-4 font-bold text-bendito-dark border-b border-gray-50">A Loja</a>
+                <a href="#para-levar" class="mobile-link py-4 px-4 font-bold text-bendito-dark border-b border-gray-50">Para Levar</a>
+                <a href="#historia" class="mobile-link py-4 px-4 font-bold text-bendito-dark border-b border-gray-50">Nossa História</a>
+                <a href="#diferenciais" class="mobile-link py-4 px-4 font-bold text-bendito-dark border-b border-gray-50">Diferenciais</a>
+                <a href="#vitrine" class="mobile-link py-4 px-4 font-bold text-bendito-dark border-b border-gray-50">Vitrine de sabores</a>
+                <a href="#visite" class="mobile-link py-4 px-4 mt-2 bg-bendito-yellow text-bendito-dark text-center rounded-xl font-bold">Visite-nos</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative min-h-[90vh] flex items-center pt-24 bg-bendito-yellow overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 lg:py-0">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+                <div class="reveal reveal-left order-2 lg:order-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white text-bendito-dark font-bold text-xs sm:text-sm rounded-full mb-8 uppercase tracking-widest shadow-lg">
+                        <i class="fa-solid fa-leaf"></i> Sem adição de açúcares
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-bendito-dark leading-[1.1] mb-6 text-balance tracking-tight">
+                        Não é igual.<br>
+                        <span class="text-white drop-shadow-sm">É melhor.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-bendito-dark/80 font-medium mb-10 max-w-lg mx-auto lg:mx-0">
+                        27 sabores com gosto de sorvete de verdade, todos sem adição de açúcar e feitos aqui mesmo, em Arapongas.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#visite" class="bg-white text-bendito-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-bendito-cream transition-all hover:-translate-y-1 shadow-xl flex items-center justify-center gap-2">
+                            Como chegar <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#experiencia" class="bg-white/30 backdrop-blur-sm text-bendito-dark border-2 border-bendito-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all flex items-center justify-center">
+                            Conheça a Bendito
+                        </a>
+                    </div>
+
+                    <div class="mt-10 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-bendito-dark/80 text-sm font-semibold">
+                        <span><i class="fa-solid fa-check mr-1"></i> Fabricação própria</span>
+                        <span><i class="fa-solid fa-check mr-1"></i> Opções sem lactose</span>
+                        <span><i class="fa-solid fa-check mr-1"></i> Potes para levar</span>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-right order-1 lg:order-2 relative mx-auto w-full max-w-md lg:max-w-[min(100%,72vh)]">
+                    <div class="relative aspect-square rounded-[2rem] overflow-hidden shadow-2xl img-zoom-container border-8 border-white/40">
+                        <img src="imagens/hero-potinho.jpg" alt="Copinho da Bendito com duas bolas de sorvete em frente à frase Não é igual, é melhor" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <!-- Selo real da loja -->
+                    <img src="imagens/selo-recorte.jpg" alt="Selo Sem adição de açúcares Bendito Sorvete" class="spin-slow absolute -top-5 -left-4 sm:-left-8 w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white shadow-xl">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIÊNCIA -->
+    <section id="experiencia" class="py-24 bg-bendito-cream overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <div class="reveal reveal-left relative">
+                    <div class="aspect-[4/5] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-premium img-zoom-container relative">
+                        <img src="imagens/formatos.jpg" alt="Milkshake, copinho, casquinha e frozen da Bendito" class="w-full h-full object-cover img-zoom">
+                    </div>
+                </div>
+
+                <div class="reveal reveal-right">
+                    <span class="text-yellow-600 font-bold uppercase tracking-[0.2em] text-xs mb-6 block">A sua escolha</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark mb-6 text-balance leading-tight">
+                        Casquinha, copinho, milkshake ou frozen?
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-10 leading-relaxed font-light">
+                        Aqui na Bendito, quem escolhe o seu momento é você. Monte do seu jeito com os nossos sabores, sabendo que tudo foi feito sem adição de açúcares e sem culpa.
+                    </p>
+
+                    <ul class="space-y-6 mb-12 border-l border-bendito-yellow/50 pl-8">
+                        <li class="font-heading font-semibold text-2xl text-bendito-dark relative group transition-all duration-300 hover:translate-x-2 cursor-default">
+                            <span class="absolute -left-[37px] top-1/2 -translate-y-1/2 w-3 h-3 bg-bendito-yellow rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md"></span>
+                            Casquinha
+                        </li>
+                        <li class="font-heading font-semibold text-2xl text-bendito-dark relative group transition-all duration-300 hover:translate-x-2 cursor-default">
+                            <span class="absolute -left-[37px] top-1/2 -translate-y-1/2 w-3 h-3 bg-bendito-yellow rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md"></span>
+                            Copinho de 1 ou 2 bolas
+                        </li>
+                        <li class="font-heading font-semibold text-2xl text-bendito-dark relative group transition-all duration-300 hover:translate-x-2 cursor-default">
+                            <span class="absolute -left-[37px] top-1/2 -translate-y-1/2 w-3 h-3 bg-bendito-yellow rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md"></span>
+                            Milkshake
+                        </li>
+                        <li class="font-heading font-semibold text-2xl text-bendito-dark relative group transition-all duration-300 hover:translate-x-2 cursor-default">
+                            <span class="absolute -left-[37px] top-1/2 -translate-y-1/2 w-3 h-3 bg-bendito-yellow rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md"></span>
+                            Frozen
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 pt-8 border-t border-gray-200/60">
+                        <p class="font-serif italic text-gray-500 text-xl leading-relaxed">
+                            "Nem parece que é sem adição de açúcar."
+                        </p>
+                        <span class="text-xs uppercase tracking-widest text-bendito-dark font-bold mt-3 block opacity-70">
+                            A frase que mais ouvimos na loja
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- A LOJA (fotos reais) -->
+    <section id="loja" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 reveal">
+                <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm mb-4 block">Venha sentir de perto</span>
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark mb-4">Um cantinho feito pra você</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Na esquina da Rua Jacutinga com a Rua Flamingos, no Centro. Ambiente climatizado, vitrine cheia e mesinhas ao ar livre para curtir sem pressa.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 md:h-[640px] reveal">
+                <div class="col-span-2 row-span-2 rounded-[1.5rem] overflow-hidden img-zoom-container relative group aspect-[4/3] md:aspect-auto">
+                    <img src="imagens/fachada-horizontal.jpg" alt="Fachada da Bendito Sorvete em Arapongas" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
+                        <p class="text-white font-heading font-bold text-xl">A nossa casa</p>
+                        <p class="text-white/80 text-sm">Rua Jacutinga, 362, Centro</p>
+                    </div>
+                </div>
+                <div class="rounded-[1.5rem] overflow-hidden img-zoom-container relative aspect-[3/4] md:aspect-auto">
+                    <img src="imagens/interna-recepcao.jpg" alt="Balcão e vitrine de sorvetes" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    <span class="absolute bottom-3 left-3 bg-white/90 text-bendito-dark text-xs font-bold px-3 py-1 rounded-full">Vitrine de sabores</span>
+                </div>
+                <div class="rounded-[1.5rem] overflow-hidden img-zoom-container relative aspect-[3/4] md:aspect-auto">
+                    <img src="imagens/mesas.jpg" alt="Mesas ao ar livre da Bendito" class="w-full h-full object-cover img-zoom object-[center_60%]" loading="lazy">
+                    <span class="absolute bottom-3 left-3 bg-white/90 text-bendito-dark text-xs font-bold px-3 py-1 rounded-full">Área externa</span>
+                </div>
+                <div class="rounded-[1.5rem] overflow-hidden img-zoom-container relative aspect-[3/4] md:aspect-auto">
+                    <img src="imagens/interna-frase.jpg" alt="Parede com a frase Não é igual, é melhor" class="w-full h-full object-cover img-zoom object-top" loading="lazy">
+                    <span class="absolute bottom-3 left-3 bg-white/90 text-bendito-dark text-xs font-bold px-3 py-1 rounded-full">Ambiente climatizado</span>
+                </div>
+                <div class="rounded-[1.5rem] overflow-hidden img-zoom-container relative aspect-[3/4] md:aspect-auto">
+                    <img src="imagens/casquinha-morango-chocolate.jpg" alt="Casquinha com sorvete de morango e chocolate" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    <span class="absolute bottom-3 left-3 bg-white/90 text-bendito-dark text-xs font-bold px-3 py-1 rounded-full">Casquinha</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA LEVAR -->
+    <section id="para-levar" class="py-24 bg-bendito-cream overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 reveal">
+                <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm mb-4 block">Leve a Bendito pra casa</span>
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark mb-4">Para levar</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Picolés e potes prontos no freezer da loja. Todos sem adição de açúcar.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                <!-- Picolés -->
+                <article class="bg-white rounded-[1.75rem] overflow-hidden shadow-premium border border-gray-100 flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden img-zoom-container">
+                        <img src="imagens/picoles.jpg" alt="Placa de preços dos picolés" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="font-heading font-bold text-xl text-bendito-dark mb-2">Picolés</h3>
+                        <p class="text-gray-500 text-sm mb-4">De água, de leite e skimo. O queridinho da casa.</p>
+                        <p class="mt-auto text-bendito-dark font-heading font-extrabold">a partir de R$ 4,50</p>
+                    </div>
+                </article>
+
+                <!-- Pote 200ml -->
+                <article class="bg-white rounded-[1.75rem] overflow-hidden shadow-premium border border-gray-100 flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden img-zoom-container">
+                        <img src="imagens/sorvetes-lacteos-200ml.jpg" alt="Potes de sorvete de 200ml" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="font-heading font-bold text-xl text-bendito-dark mb-2">Pote 200ml</h3>
+                        <p class="text-gray-500 text-sm mb-4">Sabores tradicionais e recheados, na medida pra uma pessoa.</p>
+                        <p class="mt-auto text-bendito-dark font-heading font-extrabold">a partir de R$ 10,00</p>
+                    </div>
+                </article>
+
+                <!-- Pote 1L -->
+                <article class="bg-white rounded-[1.75rem] overflow-hidden shadow-premium border border-gray-100 flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden img-zoom-container">
+                        <img src="imagens/sorvetes-lacteos-1l.jpg" alt="Potes de sorvete de 1 litro" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="font-heading font-bold text-xl text-bendito-dark mb-2">Pote 1 litro</h3>
+                        <p class="text-gray-500 text-sm mb-4">Pra família toda. Tradicionais e recheados.</p>
+                        <p class="mt-auto text-bendito-dark font-heading font-extrabold">a partir de R$ 31,00</p>
+                    </div>
+                </article>
+
+                <!-- Sem lactose e sorbet -->
+                <article class="bg-white rounded-[1.75rem] overflow-hidden shadow-premium border border-gray-100 flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden img-zoom-container">
+                        <img src="imagens/sem-lactose-sorbet.jpg" alt="Sorvetes sem lactose e sorbets" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="font-heading font-bold text-xl text-bendito-dark mb-2">Sem lactose e sorbet</h3>
+                        <p class="text-gray-500 text-sm mb-4">Linha sem lactose e sorbets à base de frutas e água, em potes de 200ml.</p>
+                        <p class="mt-auto text-bendito-dark font-heading font-extrabold">a partir de R$ 14,00</p>
+                    </div>
+                </article>
+                <!-- Sobremesas da geladeira -->
+                <article class="bg-white rounded-[1.75rem] overflow-hidden shadow-premium border-2 border-bendito-yellow flex flex-col sm:flex-row sm:col-span-2 lg:col-span-2">
+                    <div class="sm:w-1/2 aspect-[4/3] sm:aspect-auto overflow-hidden img-zoom-container">
+                        <img src="imagens/geladeira-sobremesas.jpg" alt="Pudins e sobremesas na geladeira da Bendito" class="w-full h-full object-cover img-zoom" loading="lazy">
+                    </div>
+                    <div class="p-8 sm:w-1/2 flex flex-col justify-center">
+                        <span class="self-start bg-bendito-yellow text-bendito-dark font-bold uppercase tracking-widest text-xs px-3 py-1 rounded-full mb-3">Na geladeira</span>
+                        <h3 class="font-heading font-bold text-2xl text-bendito-dark mb-3">Pudins, brownie e outras sobremesas</h3>
+                        <p class="text-gray-500 mb-6">Pudim grande para a família, pudim individual, brownie e mais delícias prontas para levar. As opções variam, então vale perguntar o que tem hoje.</p>
+                        <a href="https://api.whatsapp.com/send?l=pt_BR&phone=5543998249220&text=Ol%C3%A1%21%20Quais%20sobremesas%20voc%C3%AAs%20t%C3%AAm%20hoje%3F" target="_blank" rel="noopener" class="self-start bg-bendito-yellow text-bendito-dark px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform inline-flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i> Ver as sobremesas de hoje
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <p class="text-center text-sm text-gray-500 mt-8 reveal">Preços sujeitos a alteração. Quer saber os sabores de hoje? <a href="https://api.whatsapp.com/send?l=pt_BR&phone=5543998249220&text=Ol%C3%A1%21%20Quais%20sabores%20voc%C3%AAs%20t%C3%AAm%20hoje%3F" target="_blank" rel="noopener" class="font-bold text-bendito-dark underline decoration-bendito-yellow decoration-4 underline-offset-4">Chama no WhatsApp</a>.</p>
+        </div>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section id="historia" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal mb-16">
+            <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm mb-4 block">Nossas raízes</span>
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark mb-12">Como tudo começou</h2>
+
+            <div class="flex flex-col items-center justify-center space-y-8 mb-10">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-bendito-yellow rounded-[2rem] rotate-[4deg] scale-[1.03] transition-transform duration-700 group-hover:rotate-[2deg]"></div>
+                    <div class="w-60 h-[300px] md:w-72 md:h-[360px] rounded-[2rem] overflow-hidden border-4 border-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] relative z-10 rotate-[-2deg] group-hover:rotate-0 transition-transform duration-700">
+                        <img src="imagens/anderson-e-mara.jpg" alt="Anderson e Mara, fundadores da Bendito Sorvete" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+
+                <div class="max-w-2xl px-4">
+                    <p class="font-serif italic text-2xl md:text-3xl text-gray-600 leading-relaxed">
+                        "A Bendito não nasceu por acaso. Ela é uma empresa que vem para fazer a diferença na vida das pessoas."
+                    </p>
+                    <p class="mt-6 font-bold text-bendito-dark uppercase tracking-[0.2em] text-sm">Anderson &amp; Mara <span class="text-bendito-yellow ml-1">✦</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative mt-12">
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-100 md:-translate-x-1/2"></div>
+
+                <div class="relative flex flex-col md:flex-row items-center justify-between group reveal mb-16">
+                    <div class="md:w-5/12 pl-16 md:pl-0 md:text-right">
+                        <h4 class="text-2xl font-heading font-bold text-bendito-dark">A dieta e a cobaia</h4>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Tudo começou com uma restrição alimentar do Anderson. A Mara, que já fazia sorvetes tradicionais, começou a testar receitas sem adição de açúcar. <span class="font-bold text-bendito-dark">"No começo virava uma raspadinha"</span>, conta ela, brincando que o marido foi a cobaia perfeita.</p>
+                    </div>
+                    <div class="absolute left-[1px] md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-bendito-yellow border-[6px] border-white shadow-sm z-10 transition-transform group-hover:scale-125"></div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row-reverse items-center justify-between group reveal mb-16">
+                    <div class="md:w-5/12 pl-16 md:pl-0">
+                        <h4 class="text-2xl font-heading font-bold text-bendito-dark">A virada de chave</h4>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Depois de 6 meses consumindo o sorvete em casa, um consultor sugeriu que a gente vendesse. A ideia foi lançada: <span class="font-bold text-bendito-dark">"Amor, vamos montar uma fábrica de sorvetes?"</span>. A primeira reação da Mara foi achar loucura, mas logo mergulhamos nesse sonho.</p>
+                    </div>
+                    <div class="absolute left-[1px] md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-bendito-yellow border-[6px] border-white shadow-sm z-10 transition-transform group-hover:scale-125"></div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-center justify-between group reveal mb-16">
+                    <div class="md:w-5/12 pl-16 md:pl-0 md:text-right">
+                        <h4 class="text-2xl font-heading font-bold text-bendito-dark">O ponto perfeito</h4>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Numa das nossas caminhadas, passamos em frente a um imóvel em Arapongas com uma placa de aluga-se. Um olhou pro outro e disse: "É aqui".</p>
+                    </div>
+                    <div class="absolute left-[1px] md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-bendito-yellow border-[6px] border-white shadow-sm z-10 transition-transform group-hover:scale-125"></div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row-reverse items-center justify-between group reveal mb-16">
+                    <div class="md:w-5/12 pl-16 md:pl-0">
+                        <div class="bg-bendito-yellow text-bendito-dark inline-block px-4 py-1.5 rounded-full font-bold text-sm mb-3 shadow-md">10 de julho de 2021</div>
+                        <h4 class="text-2xl font-heading font-bold text-bendito-dark">A inauguração</h4>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Começamos de forma humilde, aproveitando as sobras da máquina para encher cerca de 60 potinhos de 200ml.</p>
+                    </div>
+                    <div class="absolute left-[-3px] md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-bendito-yellow border-[6px] border-white shadow-md z-10 flex items-center justify-center transition-transform group-hover:scale-110">
+                        <i class="fa-solid fa-star text-bendito-dark text-[10px]"></i>
+                    </div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-center justify-between group reveal">
+                    <div class="md:w-5/12 pl-16 md:pl-0 md:text-right">
+                        <h4 class="text-2xl font-heading font-bold text-bendito-dark">Expansão e família</h4>
+                        <p class="text-gray-600 mt-3 leading-relaxed">Os clientes indicavam, sugeriam melhorias e viramos uma família. Hoje são 27 sabores e planos de levar a Bendito ainda mais longe.</p>
+                    </div>
+                    <div class="absolute left-[1px] md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-bendito-yellow border-[6px] border-white shadow-sm z-10 transition-transform group-hover:scale-125"></div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais" class="py-32 bg-bendito-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark tracking-tight mb-5">Por que escolher a Bendito?</h2>
+                <p class="text-xl text-gray-500 font-medium">Sabor, cuidado e uma receita feita para surpreender.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+
+                <div class="lg:col-span-7 bg-white rounded-[2rem] p-10 md:p-16 flex flex-col justify-center reveal shadow-[0_20px_40px_-15px_rgba(0,0,0,0.03)] border border-gray-50 relative overflow-hidden">
+                    <img src="imagens/selo-recorte.jpg" alt="" aria-hidden="true" class="hidden md:block absolute -right-10 -top-10 w-44 h-44 rounded-full object-cover opacity-90 rotate-12 shadow-lg">
+                    <span class="inline-block border border-bendito-yellow/50 bg-bendito-yellow/10 text-yellow-700 font-bold uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-8 self-start">Nosso diferencial</span>
+
+                    <h3 class="text-4xl md:text-5xl font-heading font-black text-bendito-dark mb-6 leading-[1.1] tracking-tight">
+                        Sem adição<br>de açúcares
+                    </h3>
+
+                    <p class="text-gray-500 text-xl leading-relaxed font-light mb-8 text-balance">
+                        Nosso principal diferencial nasce de um compromisso real: receitas que preservam o prazer de um bom sorvete, com sabor, textura e cremosidade, sem adição de açúcares.
+                    </p>
+
+                    <p class="text-bendito-dark font-semibold text-lg">
+                        E aqui não tem sorvete comum: tudo o que sai da nossa vitrine segue essa receita.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-8">
+                    <div class="bg-bendito-yellow rounded-[2rem] p-10 md:p-12 flex flex-col justify-center reveal shadow-[0_15px_50px_-15px_rgba(255,225,0,0.3)] relative overflow-hidden flex-1 group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-60"></div>
+                        <div class="relative z-10 flex items-baseline gap-3 mb-6">
+                            <span class="text-7xl lg:text-8xl font-heading font-black text-bendito-dark tracking-tighter leading-none group-hover:scale-105 transition-transform duration-500 origin-left">27</span>
+                            <span class="text-2xl font-heading font-bold text-bendito-dark">sabores</span>
+                        </div>
+                        <p class="text-bendito-dark/90 text-lg leading-relaxed font-medium relative z-10">
+                            Uma variedade criada e aprimorada a partir da conversa com os nossos clientes.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-[2rem] p-10 md:p-12 flex flex-col justify-center reveal border border-gray-100 flex-1">
+                        <h3 class="text-2xl font-heading font-bold text-bendito-dark mb-4">Produção familiar</h3>
+                        <p class="text-gray-500 text-lg leading-relaxed font-light">
+                            Anderson e Mara acompanham de perto cada etapa, da fabricação ao atendimento no balcão.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VITRINE INFINITA DE SABORES
+         Para trocar ou incluir fotos: coloque o arquivo em imagens/galeria/ e copie uma linha abaixo.
+         O conjunto é duplicado pelo script no fim da página para o loop não piscar. -->
+    <section id="vitrine" class="py-24 bg-white overflow-hidden" aria-label="Vitrine de sabores">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-14 reveal">
+            <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm mb-4 block">Direto da nossa vitrine</span>
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark mb-4">Dá vontade só de olhar</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">São 27 sabores que se revezam na vitrine. Todos sem adição de açúcar.</p>
+        </div>
+
+        <div class="relative w-full flex overflow-hidden group py-2">
+            <div class="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+            <div id="galeria" class="flex animate-scroll-infinite gap-5 px-2 items-center">
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/potinho.jpg" alt="Copinho com duas bolas de sorvete" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/vitrine-sabores.jpg" alt="Vitrine com vários sabores de sorvete" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/casquinha-amora.jpg" alt="Casquinha de sorvete com calda de amora" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/casquinha-morango-chocolate.jpg" alt="Casquinha de morango e chocolate" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/sorvete-amora.jpg" alt="Sorvete com amoras na vitrine" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/casquinha-maracuja.jpg" alt="Casquinha de maracujá" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/boleadora-amora.jpg" alt="Boleadora servindo sorvete" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/casquinha-vitrine.jpg" alt="Casquinha sendo montada sobre a vitrine" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/formatos.jpg" alt="Milkshake, copinho, casquinha e frozen" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/img-3947.jpg" alt="Sorvete de frutas vermelhas" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+                <div class="w-[240px] md:w-[300px] aspect-[4/5] overflow-hidden rounded-[1.75rem] flex-shrink-0 shadow-lg"><img src="imagens/galeria/casquinha-fachada.jpg" alt="Casquinha em frente à parede da Bendito" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" loading="lazy"></div>
+            </div>
+        </div>
+
+        <div class="text-center mt-14 reveal">
+            <a href="https://api.whatsapp.com/send?l=pt_BR&phone=5543998249220&text=Ol%C3%A1%21%20Quais%20sabores%20voc%C3%AAs%20t%C3%AAm%20hoje%3F" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-bendito-yellow text-bendito-dark px-8 py-4 rounded-full font-bold hover:brightness-95 hover:-translate-y-1 transition-all shadow-xl">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Quais sabores tem hoje?
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-bendito-cream">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <h2 class="text-4xl font-heading font-extrabold text-bendito-dark text-center mb-12">Perguntas frequentes</h2>
+
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-2xl px-6 py-5 cursor-pointer shadow-sm border border-gray-100" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center gap-4">
+                        <h4 class="font-bold text-lg text-bendito-dark">Vocês também vendem sorvete comum?</h4>
+                        <i class="fa-solid fa-plus icon-cross text-bendito-yellow text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        Não. Na Bendito tudo é sem adição de açúcar: bola, casquinha, copinho, picolé, frozen, milkshake e os potes para levar.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl px-6 py-5 cursor-pointer shadow-sm border border-gray-100" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center gap-4">
+                        <h4 class="font-bold text-lg text-bendito-dark">"Sem adição de açúcar" é o mesmo que "sem açúcar"?</h4>
+                        <i class="fa-solid fa-plus icon-cross text-bendito-yellow text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        Não é a mesma coisa. Sem adição quer dizer que não colocamos açúcar na receita. O leite e as frutas continuam com o açúcar natural deles. Se você tem alguma restrição de saúde, converse com seu médico ou nutricionista sobre o que é melhor pra você.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl px-6 py-5 cursor-pointer shadow-sm border border-gray-100" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center gap-4">
+                        <h4 class="font-bold text-lg text-bendito-dark">Tem opção sem lactose?</h4>
+                        <i class="fa-solid fa-plus icon-cross text-bendito-yellow text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        Tem sim. Temos uma linha sem lactose e sorbets à base de frutas e água, em potes de 200ml.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl px-6 py-5 cursor-pointer shadow-sm border border-gray-100" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center gap-4">
+                        <h4 class="font-bold text-lg text-bendito-dark">Quais sabores estão disponíveis?</h4>
+                        <i class="fa-solid fa-plus icon-cross text-bendito-yellow text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        São 27 sabores no total. Como a produção é nossa e feita aos poucos, a vitrine muda ao longo da semana. Chama no WhatsApp para saber os sabores do dia!
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl px-6 py-5 cursor-pointer shadow-sm border border-gray-100" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center gap-4">
+                        <h4 class="font-bold text-lg text-bendito-dark">Qual é o horário de funcionamento?</h4>
+                        <i class="fa-solid fa-plus icon-cross text-bendito-yellow text-xl"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600">
+                        De terça a sábado das 12h30 às 19h e aos domingos das 12h30 às 18h30. Às segundas a loja fica fechada.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISITE -->
+    <section id="visite" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-bendito-gray rounded-[2rem] shadow-premium flex flex-col lg:flex-row reveal border border-gray-100">
+
+                <div class="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-bendito-dark mb-4">Vem pra Bendito!</h2>
+                    <p class="text-lg text-gray-600 mb-10">Preparamos tudo com muito carinho, direto da nossa família para a sua.</p>
+
+                    <div class="space-y-8 mb-10">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-sm text-bendito-dark text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-bendito-dark">Endereço</h4>
+                                <p class="text-gray-600 mt-1">Rua Jacutinga, 362, esquina com a Rua Flamingos<br>Centro, Arapongas, PR, 86700-255</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-sm text-bendito-dark text-xl">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-bendito-dark">Horários</h4>
+                                <p class="text-gray-600 mt-1">Terça a sábado: 12h30 às 19h<br>Domingo: 12h30 às 18h30<br>Segunda: fechado</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Bendito+Sorvete%2C+Rua+Jacutinga%2C+362%2C+Arapongas+PR" target="_blank" rel="noopener" class="bg-bendito-yellow text-bendito-dark px-6 py-4 rounded-full font-bold text-center hover:brightness-95 transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-map-location-dot"></i> Ver no mapa
+                        </a>
+                        <a href="https://api.whatsapp.com/send?l=pt_BR&phone=5543998249220&text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Bendito%20Sorvete%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs." target="_blank" rel="noopener" class="bg-[#25D366] text-white px-6 py-4 rounded-full font-bold text-center hover:bg-[#20BA56] transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 w-full min-h-[400px] lg:min-h-full relative overflow-hidden lg:rounded-r-[2rem] rounded-b-[2rem] lg:rounded-bl-none">
+                    <iframe
+                        title="Mapa da Bendito Sorvete"
+                        src="https://maps.google.com/maps?q=Bendito%20Sorvete%2C%20Rua%20Jacutinga%2C%20362%2C%20Arapongas%20PR&z=17&output=embed"
+                        class="absolute inset-0 w-full h-full border-0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-bendito-dark pt-20 pb-10 border-t-[10px] border-bendito-yellow relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center mb-16">
+
+                <div class="flex flex-col items-center md:items-start group">
+                    <div class="inline-flex flex-col items-center">
+                        <div class="halo-oval halo-footer"></div>
+                        <span class="font-heading font-black text-3xl leading-[1.1] text-white uppercase tracking-wide text-center whitespace-nowrap">
+                            BENDITO<br>SORVETE
+                        </span>
+                    </div>
+                    <p class="text-gray-400 mt-4 text-sm max-w-xs text-center md:text-left">Não é igual. É melhor. Sorvetes sem adição de açúcares, feitos em Arapongas.</p>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-2xl font-heading font-bold text-bendito-yellow italic">
+                        "Saúde, sucesso<br>e prosperidade."
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end gap-4">
+                    <a href="https://www.instagram.com/bendito_sorvetes/" target="_blank" rel="noopener" aria-label="Instagram da Bendito Sorvete" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-bendito-yellow hover:bg-bendito-yellow hover:text-bendito-dark transition-all transform hover:scale-110">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+                    <div class="text-center md:text-right text-gray-400 text-sm">
+                        <p>Rua Jacutinga, 362, esquina com a Rua Flamingos</p>
+                        <p>Centro, Arapongas, PR, 86700-255</p>
+                        <p class="text-white font-bold mt-1">(43) 99824-9220</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; 2026 Bendito Sorvete. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp flutuante -->
+    <div class="fixed bottom-6 right-6 z-[100] flex items-end flex-col gap-2">
+        <div id="wa-bubble" class="bg-white text-bendito-dark text-sm font-bold py-2 px-4 rounded-2xl rounded-br-none shadow-xl border border-gray-100 transition-opacity">
+            Quer saber os sabores de hoje? 🍦
+        </div>
+        <a href="https://api.whatsapp.com/send?l=pt_BR&phone=5543998249220&text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Bendito%20Sorvete%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs." target="_blank" rel="noopener" aria-label="Falar no WhatsApp" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-xl hover:bg-[#20BA56] hover:scale-110 transition-all duration-300 relative group">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40 group-hover:animate-ping -z-10"></span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header encolhe ao rolar
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('py-2', window.scrollY > 50);
+                header.classList.toggle('py-4', window.scrollY <= 50);
+            }, { passive: true });
+
+            // Menu mobile
+            const btn = document.getElementById('mobile-btn');
+            const menu = document.getElementById('mobile-menu');
+            const icon = btn.querySelector('i');
+            function toggleMenu() {
+                const abrir = menu.classList.contains('hidden');
+                menu.classList.toggle('hidden', !abrir);
+                icon.classList.toggle('fa-bars', !abrir);
+                icon.classList.toggle('fa-xmark', abrir);
+                btn.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+            }
+            btn.addEventListener('click', toggleMenu);
+            document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', toggleMenu));
+
+            // Galeria: duplica as fotos para o loop contínuo
+            const galeria = document.getElementById('galeria');
+            Array.from(galeria.children).forEach(item => {
+                const copia = item.cloneNode(true);
+                copia.setAttribute('aria-hidden', 'true');
+                galeria.appendChild(copia);
+            });
+
+            // Animações ao rolar
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // Balão do WhatsApp some depois de 8 segundos
+            setTimeout(() => { const b = document.getElementById('wa-bubble'); if (b) b.style.opacity = '0'; }, 8000);
+        });
+    </script>
+</body>
+</html>
